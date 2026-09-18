@@ -1,0 +1,367 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0 0;
+    padding: 0 0;
+    font-family: Ubuntu, sans-serif;
+}
+
+:root {
+    --color1: #7a7978;
+    --color2: #87cbac;
+    --color3: #913206;
+    --color4: #0b1350;
+    --color5: #8ac4ff;
+    --accent: #388e3c;
+    --accent-hover: #235825;
+}
+
+#exercise-title {
+    text-transform: capitalize;
+    font-size: 2.2rem;
+    font-weight: bold;
+    padding: 15px 0;
+    max-width: 80%;
+    overflow: hidden;
+}
+
+.files-container button {
+    flex-grow: 1;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0;
+    margin-top: 10px;
+    padding: 7px;
+    border: 1px solid lightgray;
+
+}
+
+#edit-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#import-btn {
+    border-radius: 0;
+    border-right: none;
+    border-left: none;
+}
+
+#export-btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#edit-close {
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #f73e3e;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+    padding: 7px;
+}
+
+#edit-save {
+    display: block;
+    background-color: var(--accent);
+    border: 1px solid black;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+    margin-bottom: -10px;
+    padding: 7px;
+}
+
+.edit-title {
+    border-radius: 3px;
+    font-size: 16px;
+    border: 1px solid darkgray;
+}
+
+.edit-details label, input {
+    display: block;
+}
+
+#edit-bpm {
+    width: 35%;
+    min-width: 60px;
+}
+
+#edit-time input[type="text"]{
+    width: 35%;
+    min-width: 60px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+
+
+.edit-details .edit-input {
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 2px;
+    border: 1px solid darkgray;
+}
+
+.edit-details .edit-input:focus {
+
+    outline: 2px solid rgb(66, 167, 255);
+    
+}
+
+
+.edit-details > legend {
+    font-size: 18px;
+    font-weight: bold;
+    position:relative;
+    margin-bottom: 10px;
+}
+
+.edit-bpm-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.edit-details {
+    border: 2px solid lightgray;
+    background: rgb(224, 224, 224);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0 10px
+}
+
+.edit-list {
+    border: 2px solid lightgray;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 40%;
+}
+
+.edit-list > option {
+    background-color: white;
+    padding: 5px;
+}
+
+.edit-list > option:nth-of-type(odd) {
+    background-color:lightgray;
+}
+
+
+.edit-list > option:checked {
+    font-weight: bold;
+}
+
+.edit-container {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+
+}
+
+.edit-dialog {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: 25vh;
+    width: 400px;
+    height: 300px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    gap: 5px;
+}
+
+.files-container {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding:  0 10px;
+    margin-bottom: 20px;
+}
+
+
+.metronome-buttons {
+    display: flex;
+    flex-direction: column;
+    min-height: 3rem;
+    max-height: 3rem;
+
+}
+
+.metronome-label {
+    vertical-align: bottom;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.metronome-buttons button {
+    border: 1px solid var(--accent-hover);
+    border-radius: 0;
+    background-color: var(--accent);
+    color: white;
+    max-width: 40px;
+    min-width: 40px;
+    overflow:hidden;
+    cursor: pointer;
+    transition:background-color 0.2s, border-color 0.2s;
+}
+
+.metronome-buttons button:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent);
+}
+
+.metronome-buttons #up-btn {
+    border-top-right-radius: 10px;
+}
+
+.metronome-buttons #down-btn {
+    border-bottom-right-radius: 10px;
+}
+
+.metronome-bpm {
+    border: 1px solid rgba(150, 150, 150, 0.5);
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-size: 3rem;
+    min-height: 3rem;
+    max-height: 3rem;
+    line-height: 100%;
+    font-family: "Ubuntu Mono";
+    padding: 0 5px;
+}
+
+
+.metronome-container {
+    line-height: 100%;
+    font-family: "Ubuntu Mono";
+    padding: 0 5px;
+    display: flex;
+    max-height: 3rem;
+    margin: 20px;
+    margin-top: 30px;
+    align-items: end;
+}
+
+.timer-clock {
+    font-size: 6rem;
+    font-weight: lighter;
+}
+
+.controls-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 400px;
+    border: 1px solid rgba(150, 150, 150, 0.5);
+    background-color: lightgray;
+    height: 10vh;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow:hidden;
+}
+
+.controls-btn {
+    border: none;
+    flex-grow: 1;
+    height: 100%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.timer-btn {
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+.timer-btn#decrement {
+    margin-right: 30px;
+}
+
+.timer-btn#increment {
+    margin-left: 30px;
+}
+
+.background-image {
+    background-image: repeating-radial-gradient(circle at 100%, var(--color4) 15%, var(--color3) 30%);
+    min-height: 100%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.background-image::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+
+    filter: blur(10px);
+
+    transition: all 2s linear;
+}
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.shadow-container {
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 15px;
+    min-width: 400px;
+    max-width: 800px;
+}
+
+.ui-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    background-color: white;
+    border: 1px solid rgba(150, 150, 150, 0.5);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 20vh;
+    padding-bottom: 30px;
+    overflow: hidden;
+}
