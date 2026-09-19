@@ -1,6 +1,7 @@
 "use strict";
 
-let testExercises = [
+// TODO: WE NEED ID NUMBERS FOR EDITING TO WORK RIGHT
+let exerciseArray = [
     {
         title: "Test Exercise 1",
         time: 300,
@@ -17,6 +18,55 @@ let testExercises = [
         bpm: 60
     }
 ];
+
+// handle exporting the exercise list to JSON
+function download(text, name, type) {
+    const a = document.createElement("a");
+    var file = new Blob([text], {type: type});
+
+    a.href = URL.createObjectURL(file);
+    a.download = name;
+    a.click();
+
+    URL.revokeObjectURL(a.href);
+}
+
+const exportBtn = document.getElementById("export-btn");
+exportBtn.addEventListener("click", () => {
+    const fileText = JSON.stringify(exerciseArray);
+    download(fileText, "export.txt", "text/plain");
+});
+
+// get a handle to the import button and the file input
+const fileInput = document.getElementById("import");
+const importBtn = document.getElementById("import-btn");
+
+
+importBtn.addEventListener("click", () => {
+    fileInput.click();
+});
+
+fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    
+    if (file) {
+        console.log("file name: ", file.name);
+        console.log("file size in bytes: ", file.size);
+        console.log("file type: ", file.type);
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+        console.log(e.target.result);
+        exerciseArray = JSON.parse(e.target.result);
+        setExercise(exerciseArray, 0);
+    }
+
+    reader.readAsText(file);
+
+});
+    
 
 // get handle to the exercise title
 const exerciseTitle = document.getElementById("exercise-title");
@@ -57,7 +107,7 @@ let exercisesBuffer = [];
 const editExercisesBtn = document.querySelector("#edit-btn");
 editExercisesBtn.addEventListener("click", () => {
     // copy the exercises into the buffer
-    exercisesBuffer = testExercises.slice();
+    exercisesBuffer = exerciseArray.slice();
 
     editContainer.style.display = "block";
     populateEditMenu(exercisesBuffer);
@@ -70,8 +120,8 @@ editExercisesBtn.addEventListener("click", () => {
 // get save button and assign callback
 const saveExercisesBtn = document.querySelector("#edit-save");
 saveExercisesBtn.addEventListener("click", () => {
-    testExercises = exercisesBuffer;
-    setExercise(testExercises, exerciseCurrentIndex);
+    exerciseArray = exercisesBuffer;
+    setExercise(exerciseArray, exerciseCurrentIndex);
     editContainer.style.display = "none";
 });
 
@@ -274,7 +324,7 @@ function setExercise(exercisesArray, index) {
     clearInterval(lockTimerTimeout)
     if (!isPaused) {
         lockTimeout = setInterval(playSound, numMetronomeDelay);
-        lockTimerTimeout = setInterval(() => countDown(testExercises), 1000);
+        lockTimerTimeout = setInterval(() => countDown(exerciseArray), 1000);
     }
 }
 
@@ -299,14 +349,14 @@ function getExerciseTimeFromClock(time) {
 // callback function for skip next button
 function skipToNextExercise() {
     console.log("Skipping to next exercise..");
-    setExercise(testExercises, exerciseCurrentIndex+1);
+    setExercise(exerciseArray, exerciseCurrentIndex+1);
 
 }
 
 // callback function for skip previous button
 function skipToPreviousExercise() {
     console.log("Skipping to previous exercise..");
-    setExercise(testExercises, exerciseCurrentIndex-1);
+    setExercise(exerciseArray, exerciseCurrentIndex-1);
 }
 
 // callback function for play/pause button
@@ -336,7 +386,7 @@ function playExercise() {
     clearInterval(lockTimeout);
     lockTimeout = setInterval(playSound, numMetronomeDelay);
     clearInterval(lockTimerTimeout)
-    lockTimerTimeout = setInterval(() => countDown(testExercises), 1000);
+    lockTimerTimeout = setInterval(() => countDown(exerciseArray), 1000);
 }
 
 // set listeners for BPM controls
@@ -359,4 +409,4 @@ exerciseNextBtn.addEventListener("click", skipToNextExercise);
 
 // lockTimeout = setInterval(playSound, 1000);
 
-setExercise(testExercises, 0);
+setExercise(exerciseArray, 0);
