@@ -8,6 +8,10 @@
 </head>
 <body>
     <main>
+        <span class="version-str">
+            <a target="_blank" href="https://github.com/hacx8801">Author</a>
+            <p>v0.1dev</p>
+        </span>
         <div class="edit-container">
             <div class="edit-dialog">
                 <div class="edit-details">
@@ -31,8 +35,14 @@
                     <button id="edit-close">Cancel</button>
 
                 </div>
-                <select class="edit-list" multiple>
-                </select>
+                <div class="edit-sidepane">
+                    <select class="edit-list" multiple>
+                    </select>
+                    <span class="button-group">
+                        <button class="list-btn" id="list-remove-btn">-</button>
+                        <button class="list-btn" id="list-add-btn">+</button>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="shadow-container">

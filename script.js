@@ -1,23 +1,25 @@
 "use strict";
 
-// TODO: WE NEED ID NUMBERS FOR EDITING TO WORK RIGHT
 let exerciseArray = [
     {
-        title: "Test Exercise 1",
+        title: "Example Exercise 1",
         time: 300,
         bpm: 120
     },
     {
-        title: "Test Exercise 2",
+        title: "Example Exercise 2",
         time: 600,
         bpm: 140
     },
     {
-        title: "Test Exercise 3",
+        title: "Example Exercise 3",
         time: 800,
         bpm: 60
     }
 ];
+// TODO: we need id numbers for editing robustness
+
+
 
 // handle exporting the exercise list to JSON
 function download(text, name, type) {
@@ -115,6 +117,47 @@ editExercisesBtn.addEventListener("click", () => {
     setEditMenuListeners(exercisesBuffer);
 
 });
+
+// get the add and remove buttons from the exercise edit list
+const listAddBtn = document.getElementById("list-add-btn");
+const listRemoveBtn = document.getElementById("list-remove-btn");
+
+// now set the list button click events
+listAddBtn.addEventListener("click", () => {
+    console.log("click add button");
+    appendNewExercise(exercisesBuffer);
+    setEditMenuListeners(exercisesBuffer);
+});
+
+listRemoveBtn.addEventListener("click", () => {
+    console.log("click remove button");
+    console.log("selected exercise for removal is "+editList.value);
+    let index = -1;
+
+    for (let i = 0; i  < exercisesBuffer.length; i++) {
+        const exercise = exercisesBuffer[i];
+        if (exercise.title === editList.value) {
+           index = i; 
+        }
+    }
+
+    if (index >= 0) {
+        exercisesBuffer.splice(index, 1);
+    }
+    populateEditMenu(exercisesBuffer);
+    setEditMenuListeners(exercisesBuffer);
+});
+
+function appendNewExercise(list) {
+    if (!appendNewExercise.num) {
+        appendNewExercise.num = 1;
+    }
+    else {
+        appendNewExercise.num++;
+    }
+    list.push({title: `New Exercise ${appendNewExercise.num}`, time: 300, bpm: 60});
+    populateEditMenu(list);
+}
 
 
 // get save button and assign callback
@@ -222,7 +265,9 @@ function populateEditMenu(exercises) {
     // get the object for the current exercise
     // we are showing on the main interface
     const details = exercises.find((exercise) => exercise.title === exerciseTitle.textContent);
-    setEditDetails(details);
+    if (details) {
+        setEditDetails(details);
+    }
 
 }
 

@@ -463,6 +463,7 @@ anyOf	node_modules/eslint/lib/rules/no-restricted-imports.js	/^	anyOf: [$/;"	p	c
 anyOf	node_modules/json-schema-traverse/index.js	/^  anyOf: true,$/;"	p	class:traverse.arrayKeywords
 apos	node_modules/acorn-jsx/xhtml.js	/^  apos: '\\u0027',$/;"	p	class:module.exports
 appendArguments	node_modules/eslint/lib/rules/preserve-caught-error.js	/^		function appendArguments(fixer, throwExpression, text) {$/;"	f
+appendNewExercise	script.js	/^function appendNewExercise(list) {$/;"	f
 apply	node_modules/eslint/lib/rules/prefer-reflect.js	/^			apply: "Function.prototype.apply",$/;"	p
 apply	node_modules/eslint/lib/rules/prefer-reflect.js	/^			apply: "Reflect.apply",$/;"	p	class:const
 apply	node_modules/prelude-ls/lib/Func.js	/^  apply: apply,$/;"	p	class:module.exports

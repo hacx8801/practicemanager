@@ -17,6 +17,20 @@
     --accent-hover: #235825;
 }
 
+.version-str {
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+
+.version-str > * {
+    display: block;
+    color: white;
+    font-size: 16px;
+}
+
 #exercise-title {
     text-transform: capitalize;
     font-size: 2.2rem;
@@ -41,6 +55,39 @@
 
 .files-container #import {
     display: none;
+}
+
+.edit-sidepane {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 40%;
+}
+
+.button-group {
+    flex-grow: none;
+    display: flex;
+    flex-wrap: none;
+    flex-grow: none;
+}
+
+.list-btn {
+    flex-grow: 1;
+    outline: none;
+    border: 2px solid lightgray;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.list-btn#list-add-btn {
+    border-radius: 0 0 10px 0;
+    border-left: 1px solid lightgray;
+}
+
+.list-btn#list-remove-btn {
+    border-radius: 0 0 0 10px;
+    border-right: 1px solid lightgray;
 }
 
 
@@ -70,6 +117,14 @@
     cursor: pointer;
     margin: 0;
     padding: 7px;
+}
+
+#edit-close:hover {
+    background-color: #940606;
+}
+
+#edit-save:hover {
+    background-color: var(--accent-hover);
 }
 
 #edit-save {
@@ -152,16 +207,22 @@
 
 .edit-list {
     border: 2px solid lightgray;
+    border-bottom: none;
     background: white;
-    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
-    min-width: 40%;
+    overflow-y: auto;
+    max-width: 100%;
+    flex-grow: 1;
+    border-radius: 10px 10px 0 0;
+    outline: none;
+    overflow: hidden;
 }
 
 .edit-list > option {
     background-color: white;
     padding: 5px;
+    cursor: pointer;
 }
 
 .edit-list > option:nth-of-type(odd) {
@@ -298,6 +359,16 @@
     height: 100%;
     font-size: 2rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button {
+    transition: all 0.2s ease;
+}
+
+
+button:hover {
+    background-color: lightgray;
 }
 
 .timer-btn {
@@ -351,7 +422,7 @@
     margin: 0 auto;
     width: 50%;
     border-radius: 15px;
-    min-width: 400px;
+    min-width: 500px;
     max-width: 800px;
 }
 
