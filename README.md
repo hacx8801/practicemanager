@@ -1,6 +1,6 @@
 # Practice Manager
 
-## Live site [Web app link](https://practicemanager.nfshost.com/)
+## Live site [here](https://practicemanager.nfshost.com/)
 
 ## Preview
 ![a web app timer and metronome](https://github.com/hacx8801/practicemanager/blob/main/preview.jpg)
