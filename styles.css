@@ -152,7 +152,6 @@
 
 #edit-bpm {
     width: 35%;
-    min-width: 60px;
 }
 
 #edit-time input[type="text"]{
@@ -274,6 +273,7 @@
     flex-direction: column;
     min-height: 3rem;
     max-height: 3rem;
+    min-width: 3rem;
 
 }
 
@@ -288,10 +288,11 @@
     border-radius: 0;
     background-color: var(--accent);
     color: white;
-    max-width: 40px;
-    min-width: 40px;
+    /* max-width: 40px; */
+    /* min-width: 40px; */
     overflow:hidden;
     cursor: pointer;
+    line-height: 1.5rem;
     transition:background-color 0.2s, border-color 0.2s;
 }
 
@@ -340,11 +341,11 @@
 
 .controls-container {
     display: flex;
-    flex-grow: 1;
+    flex-grow: 0;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    min-width: 400px;
+    /* min-width: 400px; */
     border: 1px solid rgba(150, 150, 150, 0.5);
     background-color: lightgray;
     height: 10vh;
@@ -391,24 +392,12 @@ button:hover {
 }
 
 .background-image {
-    background-image: repeating-radial-gradient(circle at 100%, var(--color4) 15%, var(--color3) 30%);
-    min-height: 100%;
+    background-color: lightgray;
+    height: 100%;
     overflow: hidden;
     text-align: left;
 }
 
-.background-image::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    z-index: -1;
-
-    filter: blur(10px);
-
-    transition: all 2s linear;
-}
 
 .timer-container {
     display: flex;
@@ -420,11 +409,14 @@ button:hover {
 .shadow-container {
     box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
-    width: 50%;
+    /* width: 50%; */
     border-radius: 15px;
-    min-width: 500px;
-    max-width: 800px;
+    /* min-width: 500px; */
+    /* max-width: 800px; */
+    display: flex;
+    flex-direction: column;
 }
+
 
 .ui-container {
     display: flex;
@@ -440,4 +432,37 @@ button:hover {
     margin-top: 20vh;
     padding-bottom: 30px;
     overflow: hidden;
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .ui-container {
+        height: 100%;
+        margin: 0;
+    }
+
+    #exercise-title {
+        text-align: center;
+    }
+
+    .timer-btn {
+        display: none;
+    }
+
+    .controls-container {
+        min-width: 0;
+
+    }
+
+    .shadow-container {
+        margin: 10px;
+        max-width: 100vw;
+        padding: 0;
+        height: 100%;
+    }
+
+    .version-str {
+        display: none;
+    }
+
 }
