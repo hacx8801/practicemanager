@@ -80,6 +80,33 @@ const exerciseClockDecBtn = document.querySelector(".timer-btn#decrement");
 // handle to clock increment button
 const exerciseClockIncBtn = document.querySelector(".timer-btn#increment");
 
+exerciseClockIncBtn.addEventListener("click", () => {
+    console.log("incrementing remaining time by 1 minute");
+    exerciseTimerValue += 60;
+    console.log("exercise timer value is "+exerciseTimerValue);
+    exerciseClockFace.value = setExerciseTimer(exerciseTimerValue);
+
+    if (isPaused) {
+        isPaused = false;
+        playExercise();
+    }
+});
+
+exerciseClockDecBtn.addEventListener("click", () => {
+    console.log("incrementing remaining time by 1 minute");
+    if (exerciseTimerValue > 60) {
+        exerciseTimerValue -= 60;
+        console.log("exercise timer value is "+exerciseTimerValue);
+        exerciseClockFace.value = setExerciseTimer(exerciseTimerValue);
+
+        if (isPaused) {
+            isPaused = false;
+            playExercise();
+        }
+    }
+});
+
+
 // handle to the container for metronome controls
 const exerciseBpmContainer = document.querySelector(".metronome-container");
 // handle to metronome bpm increase button
