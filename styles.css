@@ -27,7 +27,7 @@
 
 .version-str > * {
     display: block;
-    color: white;
+    color: black;
     font-size: 16px;
 }
 
@@ -409,10 +409,7 @@ button:hover {
 .shadow-container {
     box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
-    /* width: 50%; */
     border-radius: 15px;
-    /* min-width: 500px; */
-    /* max-width: 800px; */
     display: flex;
     flex-direction: column;
 }
@@ -429,7 +426,6 @@ button:hover {
     border: 1px solid rgba(150, 150, 150, 0.5);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    margin-top: 20vh;
     padding-bottom: 30px;
     overflow: hidden;
     flex-grow: 1;
@@ -465,4 +461,11 @@ button:hover {
         display: none;
     }
 
+}
+
+@media screen and (min-width: 768px) {
+    .shadow-container {
+        width: 50%;
+        margin-top: 20vh;
+    }
 }

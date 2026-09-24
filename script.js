@@ -420,14 +420,14 @@ function handlePlayPauseClick() {
 
 // helper for play/pause handler
 function pauseExercise() {
-    exercisePlaypauseBtn.textContent = "⏵";
+    exercisePlaypauseBtn.textContent = "Play";
     clearInterval(lockTimeout);
     clearInterval(lockTimerTimeout)
 }
 
 // helper for play/pause handler
 function playExercise() {
-    exercisePlaypauseBtn.textContent = "⏸";
+    exercisePlaypauseBtn.textContent = "Pause";
     clearInterval(lockTimeout);
     lockTimeout = setInterval(playSound, numMetronomeDelay);
     clearInterval(lockTimerTimeout)
